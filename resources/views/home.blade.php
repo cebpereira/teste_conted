@@ -3,10 +3,10 @@
 @section('content')
     <div class="bg-image"
         style="background-image: url('https://static.vecteezy.com/system/resources/previews/006/327/095/non_2x/dark-blue-gradient-colors-abstract-blurred-background-for-landing-page-free-vector.jpg');
-        height: 528px">
+        min-height: 528px">
 
         <div class="d-flex align-items-center flex-column"
-            style="height: 538px; padding-top: 10%; background-image: url('public\img\bg.png');">
+            style="padding-top: 10%">
 
             <div class="p-2 text-white">
                 <h1>SEJA BEM VINDO</h1>
