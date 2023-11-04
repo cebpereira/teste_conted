@@ -9,7 +9,7 @@ class Button
         return '
             <div class="btn-group btn-group-sm ">
                 <a href="' . $href . '"
-                    class="btn btn-outline-dark-primary color-palette bg-gradient"
+                    class="' . $class . '"
                     data-id="' . $id . '"
                     title="' . $title . '" data-toggle="tooltip">
                     <i class="fas fa-' . $icon . ' fa-lg"></i>

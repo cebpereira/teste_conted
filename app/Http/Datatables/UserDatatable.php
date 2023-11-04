@@ -21,6 +21,7 @@ class UserDatatable extends Controller
     {
         $visualizar = Button::DataTableButton(
             href: "/user/$user->id/visualizar",
+            class: "btn btn-primary",
             id: $user->id,
             title: 'Visualizar Usuário',
             icon: 'eye',
@@ -29,6 +30,7 @@ class UserDatatable extends Controller
 
         $editar = Button::DataTableButton(
             href: "/user/$user->id/editar",
+            class: "btn btn-secondary",
             id: $user->id,
             title: 'Editar Usuário',
             icon: '',
@@ -37,6 +39,7 @@ class UserDatatable extends Controller
 
         $excluir = Button::DataTableButton(
             href: "/user/$user->id/excluir",
+            class: "btn btn-danger",
             id: $user->id,
             title: 'Excluir Usuário',
             icon: '',
@@ -51,16 +54,18 @@ class UserDatatable extends Controller
     }
 
     // Listar usuários
-    public function showListUsers()
+    public function showUsers()
     {
         $users = $this->repoUser->getList(
-            columns: ['id', 'nome', 'cpf', 'telefone', 'email'],
-            filters: [['status', 'em_espera']]
+            columns: ['id', 'nome', 'cpf', 'telefone', 'email']
         );
 
         return Datatables::of($users)
             ->editColumn('id', function ($user) {
                 return $user->id;
+            })
+            ->editColumn('nome', function ($user) {
+                return $user->nome;
             })
             ->editColumn('cpf', function ($user) {
                 return $user->cpf;

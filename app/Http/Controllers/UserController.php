@@ -2,64 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Services\UserService;
-use UserRepositoryInterface;
+use App\Models\Usuario;
+use App\Services\UsuarioService;
+use UsuarioRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class InscricaoController extends Controller
 {
-    private $repoUser;
+    private $repoUsuario;
 
     public function __construct(
-        UserRepositoryInterface $repoUser,
+        UsuarioRepositoryInterface $repoUsuario,
     ) {
-        $this->repoUser = $repoUser;
+        $this->repoUsuario = $repoUsuario;
     }
+
 
     // Tela de usuários
-    public function viewListUsers()
+    public function index()
     {
-        return view('user.list_users');
+        return view('Usuario.index');
     }
 
-    // Método para criar um usuário
+    // Tela de criação de usuário pela conta de administrador
+    public function viewCriarUsuario()
+    {
+        $data = $this->usuarioService->create();
+
+        return view('Usuario.create', $data);
+    }
+
+    // Tela de editar usuário pela conta de administrador
+    public function viewEditarUsuario()
+    {
+        $data = $this->userService->edit($id);
+
+        return view('Usuario.edit_usuario', $data);
+    }
+
+    // Método para cadastrar usuario pela conta de administrador
     public function store(RequestUser $request)
     {
-        try {
-            $this->repoUser->store($request);
-            Session::flash('message_sucesso', 'Usuário criado com sucesso.');
-            return redirect()->route('home');
-        } catch (\Exception) {
-            Session::flash('message', 'Não foi possível cadastrar usuário, tente novamente.');
-            return back()->withInput();
-        }
+        return $this->userService->store($request);
     }
 
-    // Método para cancelar um usuário
+    // Método para atualizar os dados do usuário pela conta de administrador
+    public function update(RequestUser $request)
+    {
+        return $this->userService->update($request);
+    }
+
     public function delete($id)
     {
-        try {
-            $this->repoUser->destroy($id);
-            Session::flash('message', 'Usuário excluído com sucesso.');
-        } catch (\Exception $errors) {
-            Session::flash('message', 'Não foi possível excluir o usuário, tente novamente.');
-            return back()->withInput();
-        }
+        return $this->userService->destroy($id);
     }
 
-    // Método para atualizar um usuário
-    public function update(Request $request, $id)
-    {
-        try {
-            $data = $this->repoUser->update($request, $id);
-            Session::flash('message', $data['message']);
-            return redirect()->route('user.profile');
-        } catch (\Exception) {
-            Session::flash('message', 'Não foi possível atualizar o usuário, tente novamente.');
-            return back()->withInput();
-        }
-    }
 }

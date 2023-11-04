@@ -7,4 +7,6 @@
     <title>Teste Técnico - @yield('htmlheader_title', 'Home')</title>
     <link rel="icon" href="{{ url('img/logo.png') }}" type="image/x icon">
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
+
+    <script src="{{ asset('js/mostrar_senha.js') }}"></script>
 </head>

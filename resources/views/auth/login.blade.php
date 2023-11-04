@@ -3,14 +3,15 @@
 
 @section('content')
     <div class="bg-image">
-        <div class="container py-2 h-100 main-content"> <!-- Aumentei o padding vertical -->
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="card shadow-sm card-registration" style="border-radius: 15px; margin-top: 20px;">
-                        <!-- Adicionei margem superior -->
+        <div class="container py-2 h-100 main-content">
+            <div class="row justify-content-center align-items-center" style="padding-top: 2%">
+                <div class="col-md-8 col-lg-6" >
+                    <div class="card shadow-sm card-registration">
                         <div class="card-body p-3 p-md-4">
 
-                            <form class="card-body cardbody-color p-2">
+                            <form class="card-body cardbody-color p-2" method="post" action="{{ url('/login') }}">
+                            @csrf
+                            
                                 <div class="text-center">
                                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                                         class="img-fluid profile-image-pic img-thumbnail rounded-circle my-2" width="89px"
@@ -24,8 +25,16 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="senha" class="form-label">Senha</label>
-                                    <input type="password" class="form-control form-control-sm" id="senha">
+                                    <label for="senha">Senha</label>
+                                    <div class="input-group">
+                                        <input type="password" autocomplete="off" name="senha" id="senha"
+                                            class="form-control">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span id='exibir-senha' class="fa fa-eye-slash"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -50,4 +59,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts_adicionais')
+  <script src="{{ asset('js/mostrar_senha.js') }}"></script>
 @endsection

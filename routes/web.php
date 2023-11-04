@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,27 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Home
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function (){
-    return view('auth.login');
-});
+//Login
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/register', function (){
-    return view('auth.register');
-});
+Auth::routes();
 
-Route::get('/users', function (){
-    return view('user.users');
-});
+// Logout
+Route::get('/sair', [LoginController::class, 'sair'])->name('sair');
 
-// localhost/$id/edit
-Route::get('/edit', function (){
-    return view('user.edit');
-});
+// Cadastro
+Route::get('register', [RegisterController::class, 'showForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
 
-Route::get('/list_users', function (){
-    return view('user.list_users');
-});
+//Usuário
+Route::prefix('user')
+    ->group(__DIR__ . '/user.php');
