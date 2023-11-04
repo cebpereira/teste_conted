@@ -13,8 +13,8 @@ up:
 	docker-compose up -d
 
 composer-update:
-	docker exec laravel-docker bash -c "composer update"
+	docker exec teste-conted-site bash -c "composer update"
 
 data:
-	docker exec laravel-docker bash -c "php artisan migrate"
-	docker exec laravel-docker bash -c "php artisan db:seed"
+	docker exec teste-conted-site bash -c "php artisan migrate"
+	docker exec teste-conted-site bash -c "php artisan db:seed"

@@ -1,12 +1,17 @@
 services:
 
-  laravel-docker:
-    container_name: laravel-docker
-    build: .
+  apache:
+    container_name: teste-conted-site
+    build: ./docker/.
     volumes:
-      - ./laravel-app:/var/www/html
+      - .:/var/www/html/teste-conted
+    restart: always
     ports:
-      - 9000:80
+      - 80:80
+    networks:
+      - teste-conted-network
+    depends_on:
+      - mysql_db
 
   mysql_db:
     image: mysql:latest
@@ -15,10 +20,17 @@ services:
       MYSQL_DATABASE: mysql-db
     ports:
       - 3306:3306
+    networks:
+      - teste-conted-network
 
   phpmyadmin:
     image: phpmyadmin:latest
     ports:
-      - 9001:80
+      - 8080:80
     environment:
       - PMA_ARBITRARY=1
+    networks:
+      - teste-conted-network
+
+networks:
+  teste-conted-network: {}
