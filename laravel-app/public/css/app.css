@@ -1,0 +1,17 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.main-content {
+    min-height: calc(100vh - 60px); /* Ajusta a altura da seção principal, subtraindo a altura do footer */
+    padding-bottom: 60px; /* Adiciona espaço no final da seção principal para compensar a altura do footer */
+}
+
+.bg-image {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/006/327/095/non_2x/dark-blue-gradient-colors-abstract-blurred-background-for-landing-page-free-vector.jpg");
+    background-size: cover;
+}

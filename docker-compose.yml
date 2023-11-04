@@ -1,35 +1,24 @@
-version: '3'
-
 services:
-  apache:
-    build: ./docker/apache/.
-    container_name: teste_conted_site
-    image: teste_conted-site
-    restart: always
-    ports:
-      - 80:80
-    volumes:
-      - .:/var/www/html/teste_conted
-    networks:
-      - teste_conted-network
-    depends_on:
-      - mysql
 
-  mysql:
-    build: ./docker/mysql/.
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    container_name: mysql
+  laravel-docker:
+    container_name: laravel-docker
+    build: .
+    volumes:
+      - ./laravel-app:/var/www/html
     ports:
-      - ${MYSQL_PORT}:3306
+      - 9000:80
+
+  mysql_db:
+    image: mysql:latest
     environment:
-      MYSQL_DATABASE: default
-      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - db-data:/var/lib/mysql/data
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysql-db
+    ports:
+      - 3306:3306
 
-networks:
-  teste_conted-network: {}
-
-volumes:
-  db-data: {}
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
