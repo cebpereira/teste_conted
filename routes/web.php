@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
+use App\Http\DataTables\UserDatatable;
+use Illuminate\Support\Facades\Login;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,23 +19,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Home
-Route::get('/', function () {
+//Tela Inicial
+Route::get('/home', function () {
     return view('home');
 });
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
 Auth::routes();
 
 // Logout
-Route::get('/sair', [LoginController::class, 'sair'])->name('sair');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Cadastro
 Route::get('register', [RegisterController::class, 'showForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
-//Usuário
+// Rotas de Usuário
 Route::prefix('user')
-    ->group(__DIR__ . '/user.php');
+    ->group(__DIR__ . '/web/user.php');
+

@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', 'Cadastro de Usuário')
+@section('htmlheader_title', 'Criar Usuário')
 
 @section('content')
 <div class="bg-image">
     <div class="container py-3 main-content">
-        <div class="justify-content-center align-items-center" style="padding-bottom: 3%">
+        <div class="justify-content-center align-items-center" style="padding-bottom: 5%">
             <div class="col-12" >
                 <div class="card shadow-2-strong card-registration">
                      <div class="card-body p-4 p-md-5">
                         <div class="col-sm-6">
-                            <h2>Formulário de Cadastro</h2><br>
+                            <h2>Criar novo usuário</h2><br>
                         </div>
 
                         <div class="col-sm-6">
                             (<span style="color: red;">*</span>) Campos Obrigatórios<br>
                         </div><br>
 
-                        <form action="{{ url('/register') }}" method="post" enctype="multipart/form-data" id="form">
+                        <form method="POST" action="{{ route('user.db.store') }}" id="usuarioCreate" enctype="multipart/form-data">
                             @csrf
                             <hr>
                             <h4 class="text-center"><strong>Dados Pessoais</strong></h4>
@@ -78,7 +78,7 @@
                                 <div class="form-group col-md-2" id="div-cep">
                                     <label>CEP<span style="color: red;">*</span></label>
                                     <input type="text" autocomplete="off" name="cep" id="cep"
-                                        class="form-control @error('cep') is-invalid @enderror" value="{{ old('cep') }}" >
+                                        class="form-control @error('cep') is-invalid @enderror" value="{{ old('cep') }}" required>
                                     <a href="https://buscacepinter.correios.com.br/app/endereco/index.php"
                                         style="text-decoration: underline;color:rgb(0, 0, 255);" target="_blank">Não sei meu
                                         CEP</a>
@@ -93,7 +93,7 @@
                                     <label>Endereço<span style="color: red;">*</span></label>
                                     <input type="text" autocomplete="off" name="endereco" id="endereco"
                                         class="form-control @error('endereco') is-invalid @enderror"
-                                        value="{{ old('endereco') }}" >
+                                        value="{{ old('endereco') }}" required>
                                     @error('endereco')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                                 <div class="form-group col-md-3 offset-md-1">
                                     <label>Estado<span style="color: red;">*</span></label>
                                     <input id="estado" type="estado" class="form-control @error('estado') is-invalid @enderror"
-                                        name="estado" value="{{ old('estado') }}" autocomplete="estado">
+                                        name="estado" value="{{ old('estado') }}" required autocomplete="estado">
                                     @error('estado')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
                                 <div class="form-group col-md-3" id="tamanhoDivCidade">
                                     <label>Cidade<span style="color: red;">*</span></label>
                                     <input id="cidade" type="cidade" class="form-control @error('cidade') is-invalid @enderror"
-                                        name="cidade" value="{{ old('cidade') }}" autocomplete="cidade">
+                                        name="cidade" value="{{ old('cidade') }}" required autocomplete="cidade">
                                     @error('cidade')
                                         <span class="invalid-feedback" role="alert" style='display:block'>
                                             <strong> {{ $message }} </strong>
@@ -128,7 +128,8 @@
                                 <div class="form-group col-md-2 offset-md-1">
                                     <label>Bairro<span style="color: red;">*</span></label>
                                     <input type="text" autocomplete="off" id="bairro" name="bairro"
-                                        class="form-control @error('bairro') is-invalid @enderror" value="{{ old('bairro') }}">
+                                        class="form-control @error('bairro') is-invalid @enderror" value="{{ old('bairro') }}"
+                                        required>
                                     @error('bairro')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -139,7 +140,8 @@
                                 <div class="form-group col-md-1 offset-md-1">
                                     <label>Nº<span style="color: red;">*</span></label>
                                     <input type="text" autocomplete="off" name="numero" id="numero"
-                                        class="form-control @error('numero') is-invalid @enderror" value="{{ old('numero') }}">
+                                        class="form-control @error('numero') is-invalid @enderror" value="{{ old('numero') }}"
+                                        required>
                                     @error('numero')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -217,7 +219,7 @@
                             <a href="{{ url()->previous() }}" class="btn btn-secondary float-left"><i
                                 class="fas fa-arrow-left"></i>&nbsp&nbspVoltar</a>
 
-                            <button type="submit" id="salvarCadastro" form="form" class="btn btn-primary ml-2">
+                            <button type="submit" id="usuarioCreate" form="form" class="btn btn-primary ml-2">
                                 <i class='fas fa-check'></i>&nbsp&nbspSalvar</button>
                         </form>
                     </div>

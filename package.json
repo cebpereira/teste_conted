@@ -12,7 +12,18 @@
     },
     "devDependencies": {
         "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.8.0",
+        "bootstrap": "^4.6.0",
+        "jquery": "^3.6",
+        "jquery-mask-plugin": "^1.14.16",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.16.1",
+        "postcss": "^8.1.14",
+        "sass": "^1.15.2",
+        "sass-loader": "^8.0.0",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "inputmask": "^5.0.8"
     }
 }

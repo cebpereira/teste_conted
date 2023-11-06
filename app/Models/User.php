@@ -4,11 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\Usuario as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Usuario extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -19,7 +19,7 @@ class Usuario extends Authenticatable
      */
     protected $fillable = [
         //dados pessoais
-        'id'
+        'id',
         'nome',
         'telefone',
         'data_nascimento',
@@ -34,7 +34,7 @@ class Usuario extends Authenticatable
         'complemento',
         //dados de acesso
         'email',
-        'senha',
+        'password',
     ];
 
     /**
@@ -43,7 +43,7 @@ class Usuario extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'senha',
+        'password',
         'remember_token',
     ];
 
@@ -54,6 +54,6 @@ class Usuario extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'senha' => 'hashed',
+        'password' => 'hashed',
     ];
 }

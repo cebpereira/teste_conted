@@ -1,6 +1,6 @@
 $(function ($) {
     var table = $("#table").DataTable({
-        ajax: base_url + "users/show",
+        ajax: "show_users",
         scrollCollapse: true,
         responsive: true,
         paging: true,
@@ -16,8 +16,8 @@ $(function ($) {
             { width: "15%", data: "telefone", name: "telefone" },
             { width: "20%", data: "email", name: "email" },
             { width: "15%", data: "acao", name: "acao" },
-            { data: "criado", name: "criado", visible: false },
+            { data: "created_at", name: "created_at", visible: false },
         ],
-        language: { url: "/plugins/datatables/traducao.json" },
+        language: { url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json" },
     });
 });

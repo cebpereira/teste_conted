@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class Button
 {
-    public static function DataTableButton($href, $id, $title, $icon, $name)
+    public static function DataTableButton($href, $class, $id, $title, $icon, $name)
     {
         return '
             <div class="btn-group btn-group-sm ">

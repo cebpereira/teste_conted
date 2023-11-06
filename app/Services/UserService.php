@@ -15,16 +15,29 @@ class UserService
         $this->repoUser = $repoUser;
     }
 
-    public function edit(User $slug)
+    public function create()
     {
-        $modelo = $this->repoUser->get($id);
-        $user = $modelo->user;
-
-        return compact('user');
+        return view('user.create');
     }
 
-    // Função auxiliar para o cadastro de usuário (criar usuario)
-    public function store(RequestUser $request)
+    public function view($id)
+    {
+        $user = $this->repoUser->get($id);
+        $modelo = $user;
+
+        return compact('modelo', 'user');
+    }
+
+    public function edit($id)
+    {
+        $user = $this->repoUser->get($id);
+        $modelo = $user;
+
+        return compact('modelo', 'user');
+    }
+
+    // Função auxiliar para o cadastro de usuário
+    public function createUser(RequestUser $request)
     {
         $user = $this->repoUser->store([
             'nome' => $request->nome,
@@ -39,17 +52,33 @@ class UserService
             'numero' => $request->numero,
             'complemento' => $request->complemento,
             'email' => $request->email,
-            'senha' => bcrypt($request->senha),
+            'password' => bcrypt($request->password),
         ]);
 
         return $user;
     }
 
-    // Atualiza os dados de um usuário
+    // Cadastrar novo usuário
+    public function store(RequestUser $request)
+    {
+        try {
+            
+            $user = $this->createUser($request);
+
+            Session::flash('message_sucesso', 'Usuário criado.');
+            return redirect()->route('user');
+
+        } catch (\Exception $errors) {
+            Session::flash('message', 'Não foi possível cadastrar usuário, tente novamente.');
+            return back()->withInput();
+        }
+    }
+
+    // Atualizar dados do usuário
     public function update(RequestUser $request)
     {
         try {
-            $usuario = $this->repoUser->update([
+            $user = $this->repoUser->update([
                 'nome' => $request->nome,
                 'telefone' => $request->telefone,
                 'data_nascimento' => $request->data_nascimento,
@@ -62,14 +91,13 @@ class UserService
                 'numero' => $request->numero,
                 'complemento' => $request->complemento,
                 'email' => $request->email,
-                'senha' => bcrypt($request->senha),
+                'password' => bcrypt($request->password),
             ], $id);
 
-           return redirect()->route('usuario');
+           return redirect()->route('user');
 
         } catch (\Exception) {
             Session::flash('message', 'Não foi possível editar o usuário, tente novamente.');
-
             return back()->withInput();
         }
     }

@@ -5,10 +5,10 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RequestUsuario extends FormRequest
+class RequestUser extends FormRequest
 {
     /**
-     * Determine if the usuario is authorized to make this request.
+     * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
@@ -24,9 +24,9 @@ class RequestUsuario extends FormRequest
      */
     public static $rules = [
         'nome' => ['required', 'string', 'regex:/^[a-zA-Zà-úÀ-Ú  ,.\'-]+$/'],
-        'telefone' => ['required', 'string', 'max:14'],
+        'telefone' => ['required', 'string'],
         'data_nascimento' => ['required', 'date', 'after:01/01/1920', 'before:tomorrow'],
-        'cpf' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
+        'cpf' => ['required', 'string'],
         'cep' => ['required', 'string', 'max:10'],
         'endereco' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
         'estado' => 'required',
@@ -34,9 +34,9 @@ class RequestUsuario extends FormRequest
         'bairro' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
         'numero' => ['required', 'string', 'max:10', 'regex:/([a-zA-Z])?(\d)([a-zA-Z])?/'],
         'complemento' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios', 'regex:/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\._-]+.(\.[a-zA-Z]{2,4})$/i'],
-        'senha' => ['required', 'string', 'min:8', 'confirmed'],
-        'confirmar_senha' => ['required', 'string', 'min:8', 'confirmed', 'same_at:senha'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\._-]+.(\.[a-zA-Z]{2,4})$/i'],
+        'password' => ['required', 'string', 'min:8'],
+        'password-confirm' => ['required', 'string', 'min:8'],
     ];
 
     public function rules()
@@ -59,8 +59,8 @@ class RequestUsuario extends FormRequest
             'numero' => 'Número',
             'complemento' => 'Complemento',
             'email' => 'Email',
-            'senha' => 'Senha',
-            'confirmar_senha' => 'Confirmar senha',
+            'password' => 'Senha',
+            'password-confirm' => 'Confirmar Senha',
         ];
     }
 

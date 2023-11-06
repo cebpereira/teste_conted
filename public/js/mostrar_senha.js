@@ -1,17 +1,30 @@
 let showPassword = [
-    document.getElementById('exibir-senha-atual'),
-    document.getElementById('exibir-nova-senha'),
-    document.getElementById('exibir-senha'),
-    document.getElementById('exibir-confirmar-senha'),
-]
+    'show_password_current',
+    'show-password-new',
+    'show-password',
+    'show_password',
+    'show_password_confirm',
+    'show-password-confirm',
+    'show_password_confirmation',
+];
 
-showPassword.map(element => {
+showPassword.forEach(elementId => {
+    const element = document.getElementById(elementId);
+
     if (element !== null) {
         element.addEventListener('click', function () {
-            ['fa-eye', 'fa-eye-slash'].map(e => element.classList.toggle(e));
-            element.classList.contains('fa-eye')
-                ? document.getElementsByClassName(element.id)[0].setAttribute('type', 'text')
-                : document.getElementsByClassName(element.id)[0].setAttribute('type', 'password');
+            const inputField = document.getElementById(elementId.replace('show-', ''));
+
+            if (inputField !== null) {
+                element.classList.toggle('fa-eye');
+                element.classList.toggle('fa-eye-slash');
+
+                if (element.classList.contains('fa-eye')) {
+                    inputField.setAttribute('type', 'text');
+                } else {
+                    inputField.setAttribute('type', 'password');
+                }
+            }
         });
     }
 });

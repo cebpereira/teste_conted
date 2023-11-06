@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RequestRegister;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Exception;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use App\Http\Requests\RequestUser;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\User;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -20,12 +24,20 @@ class RegisterController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | validation and creation.
     |
     */
-
     use RegistersUsers;
+
+    /**
+     * Show the application form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showForm()
+    {
+        return view('auth.register');
+    }
 
     /**
      * Where to redirect users after registration.
@@ -47,24 +59,19 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
+     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, RequestRegister::$rules);
+        return Validator::make($data, RequestUser::$rules);
     }
-
-
-    public function showForm()
-    {
-        return view('auth.register');
-    }
-
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @return \App\Models\User|\Illuminate\Http\JsonResponse
+     * @param  array  $data
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
@@ -82,12 +89,13 @@ class RegisterController extends Controller
             $user->numero = $data['numero'];
             $user->complemento = $data['complemento'];
             $user->email = $data['email'];
-            $user->senha = bcrypt($data['senha']);
+            $user->password = bcrypt($data['password']);
 
             DB::transaction(function() use ($user) {
                 $user->save();
              });
 
+            Session::flash('message_sucesso', 'Usuário criado.');
             return $user;
         } catch (Exception $erro) {
             return response()->json(['erros' => $erro]);

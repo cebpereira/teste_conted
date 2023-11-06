@@ -3,6 +3,7 @@
 
 @section('header')
     @include('layouts.header')
+    @yield('links_adicionais')
 @show
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -13,10 +14,8 @@
     </div>
 
     @include('layouts.footer')
-
-    @section('scripts')
-        @include('layouts.scripts')
-    @show
+    
+    @yield('scripts')
 
 </body>
 

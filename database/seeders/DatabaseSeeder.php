@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'numero' => 'aaaaaaaaaaaaaaaaaa',
         //     'complemento' => 'aaaaaaaaaaaaaaaaa',
         //     'email' => 'test0@example.com',
-        //     'senha' => 'pwd',
+        //     'password' => 'pwd',
         // ]);
 
         // User::create([
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         //     'numero' => 'aaaaaaaaaaaaaaaaaa',
         //     'complemento' => 'aaaaaaaaaaaaaaaaa',
         //     'email' => 'test1@example.com',
-        //     'senha' => 'pwd',
+        //     'password' => 'pwd',
         // ]);
 
         // User::create([
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
         //     'numero' => 'aaaaaaaaaaaaaaaaaa',
         //     'complemento' => 'aaaaaaaaaaaaaaaaa',
         //     'email' => 'test2@example.com',
-        //     'senha' => 'pwd',
+        //     'password' => 'pwd',
         // ]);
     }
 }

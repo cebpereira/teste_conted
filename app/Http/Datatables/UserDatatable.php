@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\DataTables;
+namespace App\Http\Datatables;
 
 use App\Helpers\Button;
 use App\Http\Controllers\Controller;
-use App\Repositories\User\Inscrito\UserRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserDatatable extends Controller
@@ -20,7 +20,7 @@ class UserDatatable extends Controller
     public function getButtons($user)
     {
         $visualizar = Button::DataTableButton(
-            href: "/user/$user->id/visualizar",
+            href: "/user/$user->id/view",
             class: "btn btn-primary",
             id: $user->id,
             title: 'Visualizar Usuário',
@@ -29,20 +29,20 @@ class UserDatatable extends Controller
         );
 
         $editar = Button::DataTableButton(
-            href: "/user/$user->id/editar",
+            href: "/user/$user->id/edit",
             class: "btn btn-secondary",
             id: $user->id,
             title: 'Editar Usuário',
-            icon: '',
+            icon: 'user-edit',
             name: 'Editar'
         );
 
         $excluir = Button::DataTableButton(
-            href: "/user/$user->id/excluir",
+            href: "/user/$user->id/delete",
             class: "btn btn-danger",
             id: $user->id,
             title: 'Excluir Usuário',
-            icon: '',
+            icon: 'trash',
             name: 'Excluir'
         );
 
@@ -53,11 +53,10 @@ class UserDatatable extends Controller
         );
     }
 
-    // Listar usuários
     public function showUsers()
     {
         $users = $this->repoUser->getList(
-            columns: ['id', 'nome', 'cpf', 'telefone', 'email']
+            columns: ['id', 'nome', 'cpf', 'telefone', 'email', 'created_at']
         );
 
         return Datatables::of($users)

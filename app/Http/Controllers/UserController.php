@@ -2,61 +2,71 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
-use App\Services\UsuarioService;
-use UsuarioRepositoryInterface;
+use App\Models\User;
+use App\Services\UserService;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
-class InscricaoController extends Controller
+class UserController extends Controller
 {
-    private $repoUsuario;
+    private $userService, $repoUser;
 
     public function __construct(
-        UsuarioRepositoryInterface $repoUsuario,
-    ) {
-        $this->repoUsuario = $repoUsuario;
-    }
+        UserService $userService,
+        UserRepositoryInterface $repoUser
 
+    ) {
+        $this->userService = $userService;
+        $this->repoUser = $repoUser;
+    }
 
     // Tela de usuários
     public function index()
     {
-        return view('Usuario.index');
+        return view('user.index');
     }
 
-    // Tela de criação de usuário pela conta de administrador
-    public function viewCriarUsuario()
+    // Tela de criar usuário
+    public function viewCreateUser()
     {
-        $data = $this->usuarioService->create();
-
-        return view('Usuario.create', $data);
+        return view('user.create');
     }
 
-    // Tela de editar usuário pela conta de administrador
-    public function viewEditarUsuario()
+    // Tela de editar usuário
+    public function viewEditUser($id)
     {
         $data = $this->userService->edit($id);
-
-        return view('Usuario.edit_usuario', $data);
+        return view('user.edit', $data);
     }
 
-    // Método para cadastrar usuario pela conta de administrador
+    // Tela de visualizar usuário
+    public function viewUser($id)
+    {
+        $data = $this->userService->view($id);
+        return view('user.view', $data);
+    }
+
+    public function viewShowUsers()
+    {
+        return view('user.users');
+    }
+
+    // Método para cadastrar usuário
     public function store(RequestUser $request)
     {
         return $this->userService->store($request);
     }
 
-    // Método para atualizar os dados do usuário pela conta de administrador
-    public function update(RequestUser $request)
+    // Método para atualizar os dados do usuário
+    public function update(RequestUser $request, $id)
     {
-        return $this->userService->update($request);
+        return $this->userService->update($request, $id);
     }
 
     public function delete($id)
     {
-        return $this->userService->destroy($id);
+        return $this->userService->delete($id);
     }
-
 }
