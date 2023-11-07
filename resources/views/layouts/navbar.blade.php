@@ -5,16 +5,29 @@
     </a>
 
     @auth
+    <div class="form-inline jutify-content-between" >
+        <a class="btn btn-primary my-2 my-sm-0 mr-3 rounded-pill" href="{{ url('/user/create') }}">
+            <span class="fas fa-user-plus"></span>
+        </a>
+
+        <a class="btn btn-primary my-2 my-sm-0 mr-3 rounded-pill" href="{{ url('/user/' . Auth::user()->id . '/edit') }}">
+            <span class="fas fa-user-edit"></span>
+        </a>
+
+        <a class="btn btn-primary my-2 my-sm-0 mr-3 rounded-pill" href="{{ url('/user/users') }}">
+            <span class="fas fa-users"></span>
+        </a>
+
         <a class="btn btn-primary my-2 my-sm-0 rounded-pill" href="{{ url('/logout') }}">
-            Logout <span class="fas fa-sign-out-alt"></span>
+            <span class="fas fa-sign-out-alt"></span>
         </a>
     </div>
     @endauth
 
     @guest
-    <div class="form-inline jutify-content-between" style="padding-right: 5px">
+    <div class="form-inline">
         <a class="btn btn-primary my-2 my-sm-0 rounded-pill" href="{{ url('/login') }}">
-            Login <span class="fas fa-sign-in-alt"></span>
+            login <span class="fas fa-sign-in-alt"></span>
         </a>
     </div>
     @endguest

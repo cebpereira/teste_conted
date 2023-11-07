@@ -25,7 +25,7 @@ class UserDatatable extends Controller
             id: $user->id,
             title: 'Visualizar Usuário',
             icon: 'eye',
-            name: 'Visualizar'
+            name: ''
         );
 
         $editar = Button::DataTableButton(
@@ -34,7 +34,7 @@ class UserDatatable extends Controller
             id: $user->id,
             title: 'Editar Usuário',
             icon: 'user-edit',
-            name: 'Editar'
+            name: ''
         );
 
         $excluir = Button::DataTableButton(
@@ -43,7 +43,7 @@ class UserDatatable extends Controller
             id: $user->id,
             title: 'Excluir Usuário',
             icon: 'trash',
-            name: 'Excluir'
+            name: ''
         );
 
         return compact(

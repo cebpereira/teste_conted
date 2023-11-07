@@ -8,9 +8,9 @@
         <div class="justify-content-center align-items-center" style="padding-bottom: 3%">
             <div class="w-100" >
                 <div class="card shadow-2-strong">
-                     <div class="card-body p-4 p-md-5">
+                     <div class="card-body">
 
-                        <div class="card">
+                        <div class="card w-100">
                             <div class="card-header">
                                 <div class="float-right">
                                     <a href="{{ route('user.create') }}"class="btn btn-block btn-outline-dark-primary"><i class="fa fa-plus"></i> Adicionar

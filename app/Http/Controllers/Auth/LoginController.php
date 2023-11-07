@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,7 @@ class LoginController extends Controller
         $credentials = request(['email', 'password']);
         
         if (Auth::attempt($credentials)) {
-            return redirect()->route('index');
+            return redirect()->route('home');
         } else {
             return view('auth.login')->with('error', 'Credenciais inválidas.');
         }

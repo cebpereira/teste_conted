@@ -28,5 +28,5 @@ Route::get('/show_users', [UserDatatable::class, 'showUsers']);
 
 // Database
 Route::post('/', [UserController::class, 'store'])->name('user.db.store');
-Route::put('/{id}', [UserController::class, 'update'])->name('user.db.update');
-Route::delete('/{id}/delete', [UserController::class, 'delete'])->name('user.db.delete');
+Route::put('/{id}/edit', [UserController::class, 'update'])->name('user.db.update');
+Route::get('/{id}/delete', [UserController::class, 'delete'])->name('user.db.delete');

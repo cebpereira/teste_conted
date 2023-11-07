@@ -185,7 +185,7 @@
                                     <div class="input-group">
                                         <input type="password" autocomplete="off" name="password" id="password"
                                             class="form-control @error('password') is-invalid @enderror show-password"
-                                            value="{{ old('password') }}" required>
+                                            value="{{ $modelo->password }}"" required>
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span id='show-password' class="fa fa-eye-slash text-secondary"></span>
@@ -204,7 +204,7 @@
                                     <div class="input-group">
                                         <input type="password" autocomplete="off" name="password-confirm" id="password-confirm"
                                             class="form-control @error('password-confirm') is-invalid @enderror show-password-confirm"
-                                            value="{{ old('password-confirm') }}" required>
+                                            value="{{ $modelo->password }}" required>
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span id='show-password-confirm' class="fa fa-eye-slash text-secondary"></span>
@@ -222,7 +222,7 @@
                             <a href="{{ url()->previous() }}" class="btn btn-secondary float-left"><i
                                 class="fas fa-arrow-left"></i>&nbsp&nbspVoltar</a>
 
-                            <button type="submit" id="userEdit" form="form" class="btn btn-primary ml-2">
+                            <button type="submit" class="btn btn-primary ml-2">
                                 <i class='fas fa-check'></i>&nbsp&nbspSalvar</button>
                         </form>
                     </div>

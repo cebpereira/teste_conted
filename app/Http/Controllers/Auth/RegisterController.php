@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use App\Http\Requests\RequestUser;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\User;
-use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RequestUser;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+
 
 class RegisterController extends Controller
 {

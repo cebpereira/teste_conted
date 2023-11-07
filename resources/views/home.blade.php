@@ -45,23 +45,29 @@
                         @endguest
 
                         @auth
-                        <div class="text-center">
-                            <h3>SEJA BEM VINDO </h3>
+                        <div class="p-3 text-center">
+                            <h3>Bem vindo, {{ Auth::user()->nome }}</h3>
                         </div>
 
-                        <div class="p-2 text-center text-white">
+                        <div class="p-3 text-center text-white">
                             <p>
-                                <a href="{{ url('/user/{$modelo->id}/edit') }}" class="btn btn-primary rounded-pill w-50">editar Perfil <span class="fas fa-user-edit"></span></a>
+                                <a href="{{ url('/user/create') }}" class="btn btn-primary rounded-pill w-50">adicionar usuário <span class="fas fa-user-plus"></span></a>
                             </p>
                         </div>
 
-                        <div class="p-2 text-center text-white">
+                        <div class="p-3 text-white text-center">
                             <p>
-                                <a href="{{ url('/user/users') }}" class="btn btn-primary rounded-pill w-50">gerenciar Usuários <span class="fas fa-users"></span></a>
+                                <a href="{{ url('/user/' . Auth::user()->id . '/edit') }}" class="btn btn-primary rounded-pill w-50">editar perfil <span class="fas fa-user-edit"></span></a>
                             </p>
                         </div>
 
-                        <div class="text-white text-center">
+                        <div class="p-3 text-center text-white">
+                            <p>
+                                <a href="{{ url('/user/users') }}" class="btn btn-primary rounded-pill w-50">gerenciar usuários <span class="fas fa-users"></span></a>
+                            </p>
+                        </div>
+
+                        <div class="p-3 text-white text-center">
                             <p>
                                 <a href="{{ url('/logout') }}" class="btn btn-primary rounded-pill w-50">logout <span class="fas fa-sign-out-alt"></span></a>
                             </p>

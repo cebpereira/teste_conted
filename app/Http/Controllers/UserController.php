@@ -4,22 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\UserService;
-use App\Repositories\UserRepositoryInterface;
+use App\Http\Requests\RequestUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    private $userService, $repoUser;
+    private $userService;
 
     public function __construct(
-        UserService $userService,
-        UserRepositoryInterface $repoUser
-
+        UserService $userService
     ) {
         $this->userService = $userService;
-        $this->repoUser = $repoUser;
     }
 
     // Tela de usuários
@@ -48,6 +45,7 @@ class UserController extends Controller
         return view('user.view', $data);
     }
 
+    // Datatable usuários
     public function viewShowUsers()
     {
         return view('user.users');
@@ -65,6 +63,7 @@ class UserController extends Controller
         return $this->userService->update($request, $id);
     }
 
+    // Método para excluir o usuário
     public function delete($id)
     {
         return $this->userService->delete($id);

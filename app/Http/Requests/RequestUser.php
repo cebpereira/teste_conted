@@ -34,9 +34,9 @@ class RequestUser extends FormRequest
         'bairro' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
         'numero' => ['required', 'string', 'max:10', 'regex:/([a-zA-Z])?(\d)([a-zA-Z])?/'],
         'complemento' => ['required', 'string', "regex:/^[a-zA-Zà-úÀ-Ú0-9|'|ª|º|\-|\s]+$/"],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\._-]+.(\.[a-zA-Z]{2,4})$/i'],
-        'password' => ['required', 'string', 'min:8'],
-        'password-confirm' => ['required', 'string', 'min:8'],
+        'email' => ['required', 'string', 'email', 'max:255', 'regex:/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\._-]+.(\.[a-zA-Z]{2,4})$/i'],
+        'password' => ['required', 'string', 'min:4'],
+        'password-confirm' => ['required', 'string', 'min:4'],
     ];
 
     public function rules()

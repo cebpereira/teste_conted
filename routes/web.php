@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //Tela Inicial
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');

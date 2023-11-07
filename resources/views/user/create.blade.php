@@ -219,7 +219,7 @@
                             <a href="{{ url()->previous() }}" class="btn btn-secondary float-left"><i
                                 class="fas fa-arrow-left"></i>&nbsp&nbspVoltar</a>
 
-                            <button type="submit" id="usuarioCreate" form="form" class="btn btn-primary ml-2">
+                            <button type="submit" class="btn btn-primary ml-2">
                                 <i class='fas fa-check'></i>&nbsp&nbspSalvar</button>
                         </form>
                     </div>

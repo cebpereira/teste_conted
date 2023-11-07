@@ -80,9 +80,6 @@
                                     <label>CEP<span style="color: red;">*</span></label>
                                     <input type="text"  name="cep" id="cep"
                                         class="form-control @error('cep') is-invalid @enderror" value="{{ $modelo->cep }}" readonly>
-                                    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-                                        style="text-decoration: underline;color:rgb(0, 0, 255);" target="_blank">Não sei meu
-                                        CEP</a>
                                     @error('cep')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

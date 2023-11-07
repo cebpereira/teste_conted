@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\UserRepositoryInterface;
+use App\Http\Requests\RequestUser;
+use Illuminate\Support\Facades\Session;
 
 class UserService
 {
@@ -66,7 +68,7 @@ class UserService
             $user = $this->createUser($request);
 
             Session::flash('message_sucesso', 'Usuário criado.');
-            return redirect()->route('user');
+            return redirect()->route('user.users');
 
         } catch (\Exception $errors) {
             Session::flash('message', 'Não foi possível cadastrar usuário, tente novamente.');
@@ -75,7 +77,7 @@ class UserService
     }
 
     // Atualizar dados do usuário
-    public function update(RequestUser $request)
+    public function update(RequestUser $request, $id)
     {
         try {
             $user = $this->repoUser->update([
@@ -94,12 +96,17 @@ class UserService
                 'password' => bcrypt($request->password),
             ], $id);
 
-           return redirect()->route('user');
+            return redirect()->route('user.users');
 
         } catch (\Exception) {
             Session::flash('message', 'Não foi possível editar o usuário, tente novamente.');
             return back()->withInput();
         }
+    }
+    public function delete($id)
+    {
+        $this->repoUser->destroy($id);
+        return redirect()->route('user.users');
     }
 
 }
