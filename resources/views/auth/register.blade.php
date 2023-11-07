@@ -135,7 +135,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            
+
                                 <div class="form-group col-md-1 offset-md-1">
                                     <label>Nº<span style="color: red;">*</span></label>
                                     <input type="text" autocomplete="off" name="numero" id="numero"
@@ -159,7 +159,7 @@
                                     @enderror
                                 </div>
                             </div>
-                                
+
                             <hr>
                             <h4 class="text-center"><strong>Dados de Acesso</strong></h4>
                             <hr>
@@ -231,4 +231,5 @@
 @section('scripts')
     <script src="{{ asset('js/mascaras.js') }}"></script>
     <script src="{{ asset('js/mostrar_senha.js') }}"></script>
+    <script src="{{ asset('js/valida_cpf.js') }}"></script>
 @endsection

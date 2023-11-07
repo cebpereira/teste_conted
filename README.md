@@ -74,13 +74,11 @@ Construção de sistema web como parte do teste técnico para a vaga de Programa
     * 8080 -> PhpMyAdmin
     * 3306 -> MySQL
     * 80 -> Apache
- 
-* A rota inicial do projeto é a localhost/home
 
 * Para gerar a app_key:
-    * No terminal de comando execute `docker exec -it teste-conted-site bash`
-    * dentro do terminal do container, execute o comando `php artisan key:generate`
-    * isso criara uma app_key para sua aplicação
+    * No terminal de comando execute `make file`
+ 
+* A rota inicial do projeto é a localhost/home
 
 ---
 
@@ -91,6 +89,12 @@ Construção de sistema web como parte do teste técnico para a vaga de Programa
 - Caso surja o erro:
     > The stream or file "/var/www/html/test-content/storage/logs/laravel.log" could not be opened in append mode: Failed to open stream: Permission denied The exception occurred while attempting to log: The stream or file "/var/www/html/test-content/storage/logs/laravel.log"\
     * utilize o comando `sudo chmod o+w ./storage/ -R` no terminal para fornecer as permissões necessárias.
+
+- Caso surja o erro:
+    > ERROR: The Compose file './docker-compose.yml' is invalid because: 
+    > Unsupported config option for services: 'phpmyadmin'
+    > Unsupported config option for networks: 'teste-conted-networ
+    * ao utilizar o comando `make setup`, no arquivo `Makefile` altere os comandos de `docker-compose` para `docker compose`, isso deve resolver o erro.
  
 > [!NOTE]
 > Em caso de sugestões, correções ou dúvidas:
