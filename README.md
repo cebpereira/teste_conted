@@ -1,66 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Logo conted.tech](public/img/logo_teste.png)
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Construção de sistema web como parte do teste técnico para a vaga de Programador PHP júnior.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Requisitos:
+* Docker <a url="https://icons8.com/icon/22813/docker">
+* Git
+* Apache
+* MySQL
+* PhpMyAdmin
+* Laravel
+* Bootstrap
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Dependências Composer:
+* php: ^8.2
+* guzzlehttp/guzzle: ^7.2
+* laravel/framework: ^10.10
+* laravel/sanctum: ^3.2
+* laravel/tinker: ^2.8
+* laravel/ui: ^4.2
+* twbs/bootstrap: 5.3.2
+* yajra/laravel-datatables-oracle: ^10.0
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Dependências Composer-dev:
+* fakerphp/faker: ^1.9.1
+* laravel/pint: ^1.0
+* laravel/sail: ^1.18
+* mockery/mockery: ^1.4.4
+* nunomaduro/collision: ^7.0
+* phpunit/phpunit: ^10.1
+* spatie/laravel-ignition": ^2.0
+* williamjss/layers: ^1.3
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Screenshots
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<div align="center">
+<a href="https://imgbox.com/9h8RfHkt" target="_blank"><img src="https://thumbs2.imgbox.com/4a/e4/9h8RfHkt_t.jpg" alt="image host"/></a>
+<a href="https://imgbox.com/jwDxIncl" target="_blank"><img src="https://thumbs2.imgbox.com/62/8d/jwDxIncl_t.jpg" alt="image host"/></a> 
+<a href="https://imgbox.com/TLn2uHAz" target="_blank"><img src="https://thumbs2.imgbox.com/1d/f7/TLn2uHAz_t.jpg" alt="image host"/></a>
+</div>
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+#### Configuração e execução do projeto
+* Clonar o repositório atual para sua máquina local:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    `git clone https://github.com/cebpereira/teste_conted`
 
-## Security Vulnerabilities
+* Navegar para a pasta do projeto:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    `cd teste_conted`
 
-## License
+* Copiar e configurar o .env:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    `cp .env.example .env`
+
+* Executar o comando abaixo no terminal:
+
+    `make setup`
+
+* Aguarde a execução do comando terminar, em caso de sucesso, os containers estarão ativos e o projeto estará rodando via localhost nas seguintes portas:
+    * 8080 -> PhpMyAdmin
+    * 3306 -> MySQL
+    * 80 -> Apache
+ 
+* A rota inicial do projeto é a localhost/home
+
+* Para gerar a app_key:
+    * No terminal de comando execute `docker exec -it teste-conted-site bash`
+    * dentro do terminal do container, execute o comando `php artisan key:generate`
+    * isso criara uma app_key para sua aplicação
+
+---
+
+#### Observações
+
+- Foram adicionadas seeders para popular o banco de dados, atualmente estão sendo inseridos 50 registros únicos, caso não queira o banco populado, comentar o comando responsável em database/seeder/DatabaseSeeder.php
+  
+- Caso surja o erro:
+    > The stream or file "/var/www/html/test-content/storage/logs/laravel.log" could not be opened in append mode: Failed to open stream: Permission denied The exception occurred while attempting to log: The stream or file "/var/www/html/test-content/storage/logs/laravel.log"\
+    * utilize o comando `sudo chmod o+w ./storage/ -R` no terminal para fornecer as permissões necessárias.
+ 
+> [!NOTE]
+> Em caso de sugestões, correções ou dúvidas:
+> [LinkedIn](https://www.linkedin.com/in/cebpereira/),
+> [Instagram](https://www.instagram.com/c_elandro/)
+> ou pelo email c.elandro.bp@gmail.com
